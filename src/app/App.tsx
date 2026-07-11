@@ -219,7 +219,7 @@ function Footer({ onNav }: { onNav: (p: Page) => void }) {
             <ul className="space-y-3.5">
               <li className="flex gap-3 text-slate-400 text-sm font-['DM_Sans']">
                 <MapPin size={15} className="text-[#00A896] mt-0.5 shrink-0" />
-                <span>1200 Research Blvd, Suite 400<br />Boston, MA 02115, USA</span>
+                <span>9250 E Costilla Avenue, Suite 220<br />Greenwood Village, Colorado 80112</span>
               </li>
               <li className="flex gap-3 text-slate-400 text-sm font-['DM_Sans']">
                 <Mail size={15} className="text-[#00A896] mt-0.5 shrink-0" />
@@ -372,7 +372,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
                 Outcomes.
               </h1>
               <p className="mt-6 text-slate-300 text-lg leading-relaxed font-['DM_Sans'] max-w-xl">
-                curelynt Research connects life sciences talent with breakthrough opportunities across clinical research, regulatory operations, and specialized staffing for teams that need to move programs forward.
+                curelynt Research links life sciences professionals to high-impact roles across clinical research, regulatory operations, and specialized staffing for teams that need to move programs forward.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <button
@@ -1600,5 +1600,6 @@ export default function App() {
     </div>
   );
 }
+
 
 
