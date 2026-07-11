@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import {
   Menu,
   X,
@@ -39,7 +39,7 @@ const NAV_LINKS: { label: string; page: Page }[] = [
   { label: "Contact", page: "contact" },
 ];
 
-// ─── Shared Components ──────────────────────────────────────────────────────
+// â”€â”€â”€ Shared Components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void }) {
   const [open, setOpen] = useState(false);
@@ -61,9 +61,6 @@ function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void })
       <div className="bg-[#0F1E35] text-white text-xs py-1.5 px-6 hidden md:flex items-center justify-between">
         <span className="text-slate-300">Advancing health through rigorous science and innovation</span>
         <div className="flex items-center gap-6">
-//           <a href="tel:+18885550192" className="flex items-center gap-1.5 hover:text-[#00A896] transition-colors">
-//             <Phone size={11} /> +1 (888) 555-0192
-//           </a>
           <a href="mailto:info@curelyntresearch.com" className="flex items-center gap-1.5 hover:text-[#00A896] transition-colors">
             <Mail size={11} /> info@curelyntresearch.com
           </a>
@@ -224,17 +221,13 @@ function Footer({ onNav }: { onNav: (p: Page) => void }) {
                 <MapPin size={15} className="text-[#00A896] mt-0.5 shrink-0" />
                 <span>1200 Research Blvd, Suite 400<br />Boston, MA 02115, USA</span>
               </li>
-//               <li className="flex gap-3 text-slate-400 text-sm font-['DM_Sans']">
-//                 <Phone size={15} className="text-[#00A896] mt-0.5 shrink-0" />
-//                 <span>+1 (888) 555-0192</span>
-//               </li>
               <li className="flex gap-3 text-slate-400 text-sm font-['DM_Sans']">
                 <Mail size={15} className="text-[#00A896] mt-0.5 shrink-0" />
                 <span>info@curelyntresearch.com</span>
               </li>
               <li className="flex gap-3 text-slate-400 text-sm font-['DM_Sans']">
                 <Clock size={15} className="text-[#00A896] mt-0.5 shrink-0" />
-                <span>Mon–Fri, 8:00 AM – 6:00 PM EST</span>
+                <span>Mon-Fri, 8:00 AM - 6:00 PM EST</span>
               </li>
             </ul>
           </div>
@@ -243,7 +236,7 @@ function Footer({ onNav }: { onNav: (p: Page) => void }) {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-slate-500 text-xs font-['DM_Sans']">
-            © 2024 curelynt Research Inc. All rights reserved.
+            (c) 2024 curelynt Research Inc. All rights reserved.
           </p>
           <div className="flex gap-5 text-xs text-slate-500 font-['DM_Sans']">
             <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
@@ -256,7 +249,7 @@ function Footer({ onNav }: { onNav: (p: Page) => void }) {
   );
 }
 
-// ─── HOME PAGE ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ HOME PAGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -277,7 +270,7 @@ const SERVICES_PREVIEW = [
   {
     icon: FlaskConical,
     title: "Clinical Research",
-    desc: "Phase I–IV trial design, execution, and monitoring with global site networks and expert CRO capabilities.",
+    desc: "Phase I-IV trial design, execution, and monitoring with global site networks and expert CRO capabilities.",
     color: "#00A896",
   },
   {
@@ -346,7 +339,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
 
   return (
     <div>
-      {/* ── Hero ── */}
+      {/* â”€â”€ Hero â”€â”€ */}
       <section className="relative min-h-[92vh] bg-[#0F1E35] flex items-center overflow-hidden pt-24">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -409,7 +402,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
                     <span className="text-xs text-slate-400 font-['DM_Mono']">Active Trials</span>
                   </div>
                   <div className="text-4xl font-extrabold text-white font-['Figtree']">87</div>
-                  <div className="text-xs text-emerald-400 mt-1 font-['DM_Sans']">↑ 12 new this quarter</div>
+                  <div className="text-xs text-emerald-400 mt-1 font-['DM_Sans']">Up 12 new this quarter</div>
                 </div>
                 <div className="bg-[#00A896] rounded-xl p-5">
                   <div className="text-3xl font-extrabold text-white font-['Figtree']">500+</div>
@@ -445,7 +438,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* ── Stats bar ── */}
+      {/* â”€â”€ Stats bar â”€â”€ */}
       <section className="bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-4">
           {STATS.map((s) => (
@@ -458,7 +451,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* ── Services preview ── */}
+      {/* â”€â”€ Services preview â”€â”€ */}
       <section className="py-20 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl mb-12">
@@ -507,7 +500,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* ── Why curelynt ── */}
+      {/* â”€â”€ Why curelynt â”€â”€ */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -540,7 +533,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
                 Science-First. Patient-Centered. Results-Driven.
               </h2>
               <p className="text-slate-500 mt-4 font-['DM_Sans'] leading-relaxed">
-                For over 15 years, we have partnered with innovators across the life sciences spectrum — helping them navigate complexity, meet regulatory requirements, and bring breakthrough therapies to the patients who need them most.
+                For over 15 years, we have partnered with innovators across the life sciences spectrum - helping them navigate complexity, meet regulatory requirements, and bring breakthrough therapies to the patients who need them most.
               </p>
               <div className="mt-8 space-y-4">
                 {[
@@ -571,7 +564,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* ── Therapeutic areas ── */}
+      {/* â”€â”€ Therapeutic areas â”€â”€ */}
       <section className="py-16 bg-[#0F1E35]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
@@ -597,7 +590,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
+      {/* â”€â”€ Testimonials â”€â”€ */}
       <section className="py-20 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -639,7 +632,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* ── Partner logos ── */}
+      {/* â”€â”€ Partner logos â”€â”€ */}
       <section className="py-12 bg-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-400 font-['DM_Mono'] mb-8">
@@ -655,7 +648,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
+      {/* â”€â”€ CTA Banner â”€â”€ */}
       <section className="py-20 bg-[#00A896]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-['Figtree'] font-extrabold text-4xl text-white leading-tight">
@@ -684,7 +677,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
   );
 }
 
-// ─── ABOUT PAGE ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ ABOUT PAGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const TEAM = [
   {
@@ -796,7 +789,7 @@ function AboutPage({ onNav }: { onNav: (p: Page) => void }) {
               </div>
               <h3 className="font-['Figtree'] font-bold text-2xl text-white mb-3">Our Vision</h3>
               <p className="text-slate-300 font-['DM_Sans'] leading-relaxed">
-                To be the world's most trusted health research partner — recognized for the quality of our science, the depth of our expertise, and our unwavering commitment to the patients at the heart of every study we conduct.
+                To be the world's most trusted health research partner - recognized for the quality of our science, the depth of our expertise, and our unwavering commitment to the patients at the heart of every study we conduct.
               </p>
             </div>
           </div>
@@ -829,7 +822,7 @@ function AboutPage({ onNav }: { onNav: (p: Page) => void }) {
                 Built for the Complex Questions in Human Health
               </h2>
               <p className="text-slate-500 mt-4 font-['DM_Sans'] leading-relaxed">
-                curelynt Research was founded in 2009 by a group of scientists and clinicians who believed the clinical research industry needed a fundamentally different approach — one that put scientific quality before speed, and patient outcomes before commercial convenience.
+                curelynt Research was founded in 2009 by a group of scientists and clinicians who believed the clinical research industry needed a fundamentally different approach - one that put scientific quality before speed, and patient outcomes before commercial convenience.
               </p>
               <p className="text-slate-500 mt-3 font-['DM_Sans'] leading-relaxed">
                 Starting with a focused oncology practice in Boston, we expanded methodically into new therapeutic areas and geographies, always ensuring that quality and scientific rigor scaled with our growth. Today, with over 2,400 professionals across 47 countries, we remain committed to those founding principles.
@@ -904,43 +897,6 @@ function AboutPage({ onNav }: { onNav: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* Leadership team */}
-//       <section className="py-20 bg-[#F8FAFC]">
-//         <div className="max-w-7xl mx-auto px-6">
-//           <div className="text-center mb-12">
-//             <SectionBadge>Leadership</SectionBadge>
-//             <h2 className="font-['Figtree'] font-bold text-4xl text-[#0F1E35] mt-4">
-//               World-Class Scientific Leadership
-//             </h2>
-//             <p className="text-slate-500 mt-3 font-['DM_Sans'] max-w-xl mx-auto">
-//               Our senior leadership team brings together decades of experience from top research institutions, regulatory agencies, and global pharmaceutical companies.
-//             </p>
-//           </div>
-//           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-//             {TEAM.map((m) => (
-//               <div key={m.name} className="bg-white rounded-xl border border-slate-100 p-6 hover:shadow-lg transition-all group">
-//                 <div className="flex items-center gap-4 mb-4">
-//                   <img
-//                     src={m.img}
-//                     alt={m.name}
-//                     className="w-14 h-14 rounded-full object-cover"
-//                   />
-//                   <div>
-//                     <div className="font-['Figtree'] font-bold text-[#0F1E35]">{m.name}</div>
-//                     <div className="text-[#00A896] text-sm font-['DM_Sans'] font-medium">{m.role}</div>
-//                   </div>
-//                 </div>
-//                 <p className="text-slate-500 text-sm font-['DM_Sans'] leading-relaxed">{m.bio}</p>
-//                 <div className="mt-4 flex gap-2">
-//                   <a href="#" className="w-7 h-7 rounded bg-slate-100 flex items-center justify-center hover:bg-[#E6F7F5] transition-colors">
-//                     <Linkedin size={12} className="text-slate-500 group-hover:text-[#00A896]" />
-//                   </a>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
 
       {/* Accreditations */}
       <section className="py-14 bg-white border-t border-slate-100">
@@ -960,7 +916,7 @@ function AboutPage({ onNav }: { onNav: (p: Page) => void }) {
   );
 }
 
-// ─── SOLUTIONS PAGE ───────────────────────────────────────────────────────────
+// â”€â”€â”€ SOLUTIONS PAGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const SOLUTIONS = [
   {
@@ -969,7 +925,7 @@ const SOLUTIONS = [
     bg: "#E6F7F5",
     title: "Clinical Research & Trial Management",
     tag: "CRO Services",
-    desc: "Full-service clinical research organization capabilities from protocol development through final study report. We manage Phase I–IV trials globally with unmatched operational precision.",
+    desc: "Full-service clinical research organization capabilities from protocol development through final study report. We manage Phase Iâ€“IV trials globally with unmatched operational precision.",
     features: [
       "Protocol design and study planning",
       "Site selection and activation",
@@ -1227,7 +1183,7 @@ function SolutionsPage({ onNav }: { onNav: (p: Page) => void }) {
                 Powered by Next-Generation Research Technology
               </h2>
               <p className="text-slate-300 mt-4 font-['DM_Sans'] leading-relaxed">
-                Our proprietary CureSphere® platform integrates CTMS, CDMS, ePRO, IWRS, and pharmacovigilance in a unified, FDA 21 CFR Part 11 compliant environment — giving sponsors real-time visibility into every aspect of their program.
+                Our proprietary CureSphere platform integrates CTMS, CDMS, ePRO, IWRS, and pharmacovigilance in a unified, FDA 21 CFR Part 11 compliant environment - giving sponsors real-time visibility into every aspect of their program.
               </p>
               <div className="mt-8 space-y-3">
                 {[
@@ -1244,7 +1200,7 @@ function SolutionsPage({ onNav }: { onNav: (p: Page) => void }) {
               </div>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-              <div className="font-['DM_Mono'] text-xs text-[#00A896] mb-3">CureSphere® Platform — Live Metrics</div>
+              <div className="font-['DM_Mono'] text-xs text-[#00A896] mb-3">CureSphere Platform - Live Metrics</div>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { label: "Active Sites", value: "1,284", delta: "+23 this week" },
@@ -1264,7 +1220,7 @@ function SolutionsPage({ onNav }: { onNav: (p: Page) => void }) {
                   <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-[#00A896] text-xs font-['DM_Mono'] font-semibold">SYSTEM STATUS: ALL OPERATIONAL</span>
                 </div>
-                <div className="text-slate-400 text-xs font-['DM_Sans']">Last updated: 2 minutes ago · 99.97% uptime SLA</div>
+                <div className="text-slate-400 text-xs font-['DM_Sans']">Last updated: 2 minutes ago - 99.97% uptime SLA</div>
               </div>
             </div>
           </div>
@@ -1292,7 +1248,7 @@ function SolutionsPage({ onNav }: { onNav: (p: Page) => void }) {
   );
 }
 
-// ─── CONTACT PAGE ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ CONTACT PAGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const FAQS = [
   {
@@ -1301,7 +1257,7 @@ const FAQS = [
   },
   {
     q: "What types of therapeutic areas does curelynt specialize in?",
-    a: "We have deep expertise across oncology, rare diseases, neurology, cardiovascular, immunology, and infectious disease — among 14 total therapeutic areas. Our scientific teams include board-certified specialists in each domain.",
+    a: "We have deep expertise across oncology, rare diseases, neurology, cardiovascular, immunology, and infectious disease - among 14 total therapeutic areas. Our scientific teams include board-certified specialists in each domain."
   },
   {
     q: "Does curelynt conduct trials outside the United States?",
@@ -1309,7 +1265,7 @@ const FAQS = [
   },
   {
     q: "How does curelynt ensure data quality and regulatory compliance?",
-    a: "Our quality management system is built on ICH E6(R2) GCP principles, FDA 21 CFR Part 11, and ISO 9001:2015 standards. We conduct continuous risk-based monitoring, regular audits, and maintain complete audit trails through CureSphere® our proprietary technology platform.",
+    a: "Our quality management system is built on ICH E6(R2) GCP principles, FDA 21 CFR Part 11, and ISO 9001:2015 standards. We conduct continuous risk-based monitoring, regular audits, and maintain complete audit trails through CureSphere our proprietary technology platform.",
   },
   {
     q: "Can curelynt support late-stage rescue studies?",
@@ -1357,7 +1313,6 @@ function ContactPage() {
           {/* Quick contact cards */}
           <div className="mt-10 grid sm:grid-cols-3 gap-4 max-w-2xl">
             {[
-//               { icon: Phone, label: "Call Us", value: "+1 (888) 555-0192", sub: "Mon–Fri 8am–6pm EST" },
               { icon: Mail, label: "Email Us", value: "info@curelyntresearch.com", sub: "Response within 4 hours" },
               { icon: Clock, label: "Hours", value: "24/7 Support", sub: "Emergency safety line" },
             ].map((c) => (
@@ -1591,7 +1546,7 @@ function ContactPage() {
   );
 }
 
-// ─── App Shell ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ App Shell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function App() {
   const [page, setPage] = useState<Page>("home");
@@ -1620,3 +1575,5 @@ export default function App() {
     </div>
   );
 }
+
+
