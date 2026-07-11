@@ -202,7 +202,7 @@ function Footer({ onNav }: { onNav: (p: Page) => void }) {
           <div>
             <h4 className="font-['Figtree'] font-semibold text-sm uppercase tracking-widest text-slate-400 mb-4">Solutions</h4>
             <ul className="space-y-2.5">
-              {["Clinical Research", "Genomics & Biomarkers", "Pharmacovigilance", "Data Analytics", "Regulatory Affairs", "Lab Diagnostics"].map((s) => (
+              {["Clinical Research", "Genomics & Biomarkers", "Pharmacovigilance", "Data Analytics", "Regulatory Affairs", "Life Sciences Staffing"].map((s) => (
                 <li key={s}>
                   <span className="text-slate-400 text-sm font-['DM_Sans'] flex items-center gap-1.5">
                     <ChevronRight size={12} className="text-[#00A896]" />
@@ -303,6 +303,12 @@ const SERVICES_PREVIEW = [
     desc: "Strategic regulatory consulting, submission preparation, and agency liaison across FDA, EMA, and PMDA.",
     color: "#10B981",
   },
+  {
+    icon: Users,
+    title: "Life Sciences Staffing",
+    desc: "Connecting life sciences talent with breakthrough opportunities across clinical operations, research, quality, and regulatory teams.",
+    color: "#0EA5E9",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -366,7 +372,7 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
                 Outcomes.
               </h1>
               <p className="mt-6 text-slate-300 text-lg leading-relaxed font-['DM_Sans'] max-w-xl">
-                curelynt Research partners with pharmaceutical, biotech, and medical device companies to accelerate the development of life-changing therapies through rigorous clinical science and advanced analytics.
+                curelynt Research connects life sciences talent with breakthrough opportunities across clinical research, regulatory operations, and specialized staffing for teams that need to move programs forward.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <button
@@ -457,10 +463,10 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
           <div className="max-w-2xl mb-12">
             <SectionBadge>Our Capabilities</SectionBadge>
             <h2 className="font-['Figtree'] font-bold text-4xl text-[#0F1E35] mt-4 leading-tight">
-              End-to-End Research Solutions
+              Research and Talent Solutions
             </h2>
             <p className="text-slate-500 mt-3 font-['DM_Sans'] leading-relaxed">
-              From early discovery through commercialization, curelynt provides the scientific rigor, operational expertise, and regulatory intelligence your program requires.
+              From early discovery through commercialization, curelynt provides the scientific rigor, operational expertise, and life sciences staffing support your program requires.
             </p>
           </div>
 
@@ -538,10 +544,11 @@ function HomePage({ onNav }: { onNav: (p: Page) => void }) {
               <div className="mt-8 space-y-4">
                 {[
                   { icon: Brain, title: "Scientific Leadership", desc: "Teams led by PhDs, MDs, and clinical specialists with deep therapeutic area expertise." },
-                  { icon: TrendingUp, title: "Operational Excellence", desc: "Proven project management frameworks that keep timelines and budgets on track." },
-                  { icon: Globe, title: "Global Infrastructure", desc: "Established investigator site networks and regulatory capabilities in 47+ countries." },
-                  { icon: Shield, title: "Quality Assurance", desc: "Robust QMS, continuous audit readiness, and zero tolerance for data integrity compromises." },
-                ].map((item) => (
+                { icon: TrendingUp, title: "Operational Excellence", desc: "Proven project management frameworks that keep timelines and budgets on track." },
+                { icon: Globe, title: "Global Infrastructure", desc: "Established investigator site networks and regulatory capabilities in 47+ countries." },
+                { icon: Shield, title: "Quality Assurance", desc: "Robust QMS, continuous audit readiness, and zero tolerance for data integrity compromises." },
+                { icon: Users, title: "Talent Partnerships", desc: "Embedded staffing support for sponsors, CROs, and life sciences organizations building high-performing teams." },
+              ].map((item) => (
                   <div key={item.title} className="flex gap-4">
                     <div className="w-10 h-10 bg-[#E6F7F5] rounded-lg flex items-center justify-center shrink-0">
                       <item.icon size={18} className="text-[#00A896]" />
@@ -1021,6 +1028,23 @@ const SOLUTIONS = [
     ],
     outcomes: ["98% first-cycle approval rate", "Regulatory representation in 25+ markets", "Former FDA and EMA reviewers on team"],
   },
+  {
+    icon: Users,
+    color: "#0EA5E9",
+    bg: "#E0F2FE",
+    title: "Life Sciences Talent & Staffing",
+    tag: "Talent Solutions",
+    desc: "Flexible staffing and talent acquisition support for life sciences organizations that need experienced people in the right roles at the right time.",
+    features: [
+      "Clinical operations and project management staffing",
+      "Regulatory affairs and quality hires",
+      "Research coordinators and study support roles",
+      "Contract, contract-to-hire, and direct placement",
+      "Rapid-response team augmentation",
+      "Leadership search for specialized functions",
+    ],
+    outcomes: ["Access to pre-vetted life sciences talent", "Support for urgent backfills and scale-up", "Matches aligned to technical and cultural fit"],
+  },
 ];
 
 function SolutionsPage({ onNav }: { onNav: (p: Page) => void }) {
@@ -1429,6 +1453,7 @@ function ContactPage() {
                         <option>Pharmacovigilance & Drug Safety</option>
                         <option>Central Laboratory</option>
                         <option>Regulatory Affairs</option>
+                        <option>Life Sciences Staffing</option>
                         <option>General Inquiry</option>
                       </select>
                     </div>
