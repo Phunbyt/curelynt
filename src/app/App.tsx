@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect } from "react";
 import {
   Menu,
   X,
@@ -38,6 +38,103 @@ const NAV_LINKS: { label: string; page: Page }[] = [
   { label: "Solutions", page: "solutions" },
   { label: "Contact", page: "contact" },
 ];
+const SITE_NAME = "curelyntresearch";
+const SITE_URL = "https://curelyntresearch.com";
+const DEFAULT_OG_IMAGE = "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1200&h=630&fit=crop&auto=format";
+const SEO_KEYWORDS = [
+  "curelyntresearch",
+  "life sciences staffing",
+  "clinical research",
+  "research staffing",
+  "biotech staffing",
+  "pharma staffing",
+  "regulatory affairs",
+  "pharmacovigilance",
+  "genomics",
+  "biostatistics",
+  "laboratory services",
+  "medical research",
+];
+
+type SeoConfig = {
+  title: string;
+  description: string;
+};
+
+const PAGE_SEO: Record<Page, SeoConfig> = {
+  home: {
+    title: "curelyntresearch | Life Sciences Talent, Research & Staffing",
+    description:
+      "curelyntresearch connects life sciences talent with breakthrough opportunities while supporting clinical research, regulatory operations, genomics, pharmacovigilance, and specialized staffing.",
+  },
+  about: {
+    title: "About curelyntresearch | Life Sciences Talent & Research",
+    description:
+      "Learn how curelyntresearch combines scientific rigor, operational excellence, and life sciences staffing support to help organizations build stronger research programs and teams.",
+  },
+  solutions: {
+    title: "Solutions | curelyntresearch Life Sciences Talent & Research",
+    description:
+      "Explore curelyntresearch solutions for clinical research, genomics, biomarker discovery, pharmacovigilance, regulatory affairs, and life sciences staffing.",
+  },
+  contact: {
+    title: "Contact curelyntresearch | Life Sciences Talent & Research",
+    description:
+      "Contact curelyntresearch to discuss clinical research, staffing, regulatory support, genomics, pharmacovigilance, or other life sciences programs.",
+  },
+};
+
+function getPageFromPath(pathname: string): Page {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  if (path === "/about") return "about";
+  if (path === "/solutions") return "solutions";
+  if (path === "/contact") return "contact";
+  return "home";
+}
+
+function getPathForPage(page: Page) {
+  switch (page) {
+    case "about":
+      return "/about";
+    case "solutions":
+      return "/solutions";
+    case "contact":
+      return "/contact";
+    default:
+      return "/";
+  }
+}
+
+function upsertMeta(attribute: "name" | "property", key: string, content: string) {
+  let el = document.head.querySelector(`meta[${attribute}="${key}"]`) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attribute, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute(attribute, key);
+  el.content = content;
+}
+
+function upsertLink(rel: string, href: string) {
+  let el = document.head.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+  if (!el) {
+    el = document.createElement("link");
+    el.rel = rel;
+    document.head.appendChild(el);
+  }
+  el.rel = rel;
+  el.href = href;
+}
+
+function upsertJsonLd(id: string, data: unknown) {
+  document.getElementById(id)?.remove();
+  const script = document.createElement("script");
+  script.id = id;
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(data);
+  document.head.appendChild(script);
+}
 
 // â”€â”€â”€ Shared Components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -1574,9 +1671,143 @@ function ContactPage() {
 // â”€â”€â”€ App Shell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function App() {
-  const [page, setPage] = useState<Page>("home");
+  const [page, setPage] = useState<Page>(() => getPageFromPath(window.location.pathname));
+
+  useEffect(() => {
+    const handlePopState = () => setPage(getPageFromPath(window.location.pathname));
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const seo = PAGE_SEO[page];
+    const canonicalUrl = new URL(getPathForPage(page), SITE_URL).toString();
+
+    document.title = seo.title;
+    upsertMeta("name", "description", seo.description);
+    upsertMeta("name", "keywords", SEO_KEYWORDS.join(", "));
+    upsertMeta("name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    upsertMeta("name", "googlebot", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    upsertMeta("name", "author", SITE_NAME);
+    upsertMeta("name", "application-name", SITE_NAME);
+    upsertMeta("name", "apple-mobile-web-app-title", SITE_NAME);
+    upsertMeta("name", "theme-color", "#0F1E35");
+    upsertMeta("property", "og:site_name", SITE_NAME);
+    upsertMeta("property", "og:title", seo.title);
+    upsertMeta("property", "og:description", seo.description);
+    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:url", canonicalUrl);
+    upsertMeta("property", "og:image", DEFAULT_OG_IMAGE);
+    upsertMeta("property", "og:image:alt", "curelyntresearch life sciences talent and research website");
+    upsertMeta("name", "twitter:card", "summary_large_image");
+    upsertMeta("name", "twitter:title", seo.title);
+    upsertMeta("name", "twitter:description", seo.description);
+    upsertMeta("name", "twitter:image", DEFAULT_OG_IMAGE);
+    upsertLink("canonical", canonicalUrl);
+
+    const organizationSchema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${SITE_URL}#organization`,
+      name: SITE_NAME,
+      alternateName: "curelynt Research",
+      url: SITE_URL,
+      email: "info@curelyntresearch.com",
+      description: PAGE_SEO.home.description,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "9250 E Costilla Avenue, Suite 220",
+        addressLocality: "Greenwood Village",
+        addressRegion: "CO",
+        postalCode: "80112",
+        addressCountry: "US",
+      },
+      areaServed: ["United States", "Canada", "Europe", "Asia-Pacific", "Latin America", "Middle East"],
+      knowsAbout: [
+        "Clinical research",
+        "Life sciences staffing",
+        "Regulatory affairs",
+        "Pharmacovigilance",
+        "Genomics",
+        "Biostatistics",
+        "Laboratory diagnostics",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "curelyntresearch Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Clinical Research",
+              description: "End-to-end trial design, execution, and monitoring support.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Life Sciences Staffing",
+              description: "Connecting life sciences professionals to high-impact roles across research and operations.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Regulatory Affairs",
+              description: "Submission strategy, regulatory liaison, and lifecycle support.",
+            },
+          },
+        ],
+      },
+    };
+
+    const websiteSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${SITE_URL}#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      description: PAGE_SEO.home.description,
+      publisher: { "@id": `${SITE_URL}#organization` },
+    };
+
+    const pageSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: seo.title,
+      description: seo.description,
+      url: canonicalUrl,
+      isPartOf: { "@id": `${SITE_URL}#website` },
+      about: { "@id": `${SITE_URL}#organization` },
+    };
+
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: FAQS.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.a,
+        },
+      })),
+    };
+
+    upsertJsonLd("seo-organization", organizationSchema);
+    upsertJsonLd("seo-website", websiteSchema);
+    upsertJsonLd("seo-page", pageSchema);
+    upsertJsonLd("seo-faq", faqSchema);
+  }, [page]);
 
   const onNav = (p: Page) => {
+    const nextPath = getPathForPage(p);
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, "", nextPath);
+    }
     setPage(p);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -1600,6 +1831,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 
