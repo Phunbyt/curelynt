@@ -158,6 +158,9 @@ function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void })
       <div className="bg-[#0F1E35] text-white text-xs py-1.5 px-6 hidden md:flex items-center justify-between">
         <span className="text-slate-300">Advancing health through rigorous science and innovation</span>
         <div className="flex items-center gap-6">
+          <a href="tel:+18442873596" className="flex items-center gap-1.5 hover:text-[#00A896] transition-colors">
+            <Phone size={11} /> +1 844 287 3596
+          </a>
           <a href="mailto:info@curelyntresearch.com" className="flex items-center gap-1.5 hover:text-[#00A896] transition-colors">
             <Mail size={11} /> info@curelyntresearch.com
           </a>
@@ -322,6 +325,10 @@ function Footer({ onNav }: { onNav: (p: Page) => void }) {
           <div>
             <h4 className="font-['Figtree'] font-semibold text-sm uppercase tracking-widest text-slate-400 mb-4">Contact</h4>
             <ul className="space-y-3.5">
+              <li className="flex gap-3 text-slate-400 text-sm font-['DM_Sans']">
+                <Phone size={15} className="text-[#00A896] mt-0.5 shrink-0" />
+                <a href="tel:+18442873596" className="hover:text-white transition-colors">+1 844 287 3596</a>
+              </li>
               <li className="flex gap-3 text-slate-400 text-sm font-['DM_Sans']">
                 <MapPin size={15} className="text-[#00A896] mt-0.5 shrink-0" />
                 <span>9250 E Costilla Avenue, Suite 220<br />Greenwood Village, Colorado 80112</span>
@@ -1442,6 +1449,7 @@ function ContactPage() {
           {/* Quick contact cards */}
           <div className="mt-10 grid sm:grid-cols-3 gap-4 max-w-2xl">
             {[
+              { icon: Phone, label: "Call Us", value: "+1 844 287 3596", sub: "Mon-Fri 8am-6pm MT" },
               { icon: Mail, label: "Email Us", value: "info@curelyntresearch.com", sub: "Response within 4 hours" },
               { icon: Clock, label: "Hours", value: "24/7 Support", sub: "Emergency safety line" },
             ].map((c) => (
