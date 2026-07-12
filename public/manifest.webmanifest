@@ -1,0 +1,18 @@
+{
+  "name": "curelyntresearch",
+  "short_name": "curelynt",
+  "description": "curelyntresearch connects life sciences talent with breakthrough opportunities across research and staffing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0F1E35",
+  "theme_color": "#0F1E35",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
