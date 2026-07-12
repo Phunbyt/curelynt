@@ -167,8 +167,9 @@ function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void })
       {/* Main nav */}
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <button
-          onClick={() => onNav("home")}
+        <a
+          href="/"
+          onClick={(e) => { e.preventDefault(); onNav("home"); }}
           className="flex items-center gap-2.5 group"
         >
           <div className="w-8 h-8 bg-[#00A896] rounded-md flex items-center justify-center">
@@ -178,14 +179,16 @@ function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void })
             cure<span className="text-[#00A896]">lynt</span>
             <span className="font-300 text-slate-500 text-sm ml-1">Research</span>
           </span>
-        </button>
+        </a>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((l) => (
-            <button
+            <a
               key={l.page}
-              onClick={() => onNav(l.page)}
+              href={getPathForPage(l.page)}
+              onClick={(e) => { e.preventDefault(); onNav(l.page); }}
+              aria-current={current === l.page ? "page" : undefined}
               className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 font-['DM_Sans'] ${
                 current === l.page
                   ? "text-[#00A896] bg-[#F0F7F6]"
@@ -193,14 +196,15 @@ function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void })
               }`}
             >
               {l.label}
-            </button>
+            </a>
           ))}
-          <button
-            onClick={() => onNav("contact")}
+          <a
+            href="/contact"
+            onClick={(e) => { e.preventDefault(); onNav("contact"); }}
             className="ml-4 px-5 py-2 bg-[#00A896] text-white text-sm font-semibold rounded-md hover:bg-[#008F7E] transition-colors font-['DM_Sans']"
           >
             Get in Touch
-          </button>
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -216,9 +220,11 @@ function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void })
       {open && (
         <div className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-1">
           {NAV_LINKS.map((l) => (
-            <button
+            <a
               key={l.page}
-              onClick={() => { onNav(l.page); setOpen(false); }}
+              href={getPathForPage(l.page)}
+              onClick={(e) => { e.preventDefault(); onNav(l.page); setOpen(false); }}
+              aria-current={current === l.page ? "page" : undefined}
               className={`text-left px-4 py-3 rounded-md font-medium text-sm font-['DM_Sans'] ${
                 current === l.page
                   ? "text-[#00A896] bg-[#F0F7F6]"
@@ -226,14 +232,15 @@ function Navbar({ current, onNav }: { current: Page; onNav: (p: Page) => void })
               }`}
             >
               {l.label}
-            </button>
+            </a>
           ))}
-          <button
-            onClick={() => { onNav("contact"); setOpen(false); }}
+          <a
+            href="/contact"
+            onClick={(e) => { e.preventDefault(); onNav("contact"); setOpen(false); }}
             className="mt-2 px-4 py-3 bg-[#00A896] text-white text-sm font-semibold rounded-md font-['DM_Sans']"
           >
             Get in Touch
-          </button>
+          </a>
         </div>
       )}
     </header>
@@ -283,13 +290,14 @@ function Footer({ onNav }: { onNav: (p: Page) => void }) {
                 { label: "Home", page: "home" as Page },
               ].map((l) => (
                 <li key={l.label}>
-                  <button
-                    onClick={() => onNav(l.page)}
-                    className="text-slate-400 hover:text-white text-sm transition-colors font-['DM_Sans'] flex items-center gap-1.5 group"
-                  >
-                    <ChevronRight size={12} className="text-[#00A896] group-hover:translate-x-0.5 transition-transform" />
-                    {l.label}
-                  </button>
+                    <a
+                      href={getPathForPage(l.page)}
+                      onClick={(e) => { e.preventDefault(); onNav(l.page); }}
+                      className="text-slate-400 hover:text-white text-sm transition-colors font-['DM_Sans'] flex items-center gap-1.5 group"
+                    >
+                      <ChevronRight size={12} className="text-[#00A896] group-hover:translate-x-0.5 transition-transform" />
+                      {l.label}
+                    </a>
                 </li>
               ))}
             </ul>
